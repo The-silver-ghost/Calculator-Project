@@ -8,6 +8,7 @@ class GUI:
     
     def main_screen(self):
         #sets size for screen
+        self.root.resizable(False,False)
         self.frame.grid()
 
 #all buttons go here
@@ -22,13 +23,23 @@ class GUI:
         self.button_8()
         self.button_9()
         self.button_0()
+        self.button_addition()
+        self.button_subtraction()
+        self.button_multiplication()
+        self.button_division()
+        self.button_power()
+        self.button_left_parenthesis()
+        self.button_right_parenthesis()
+        self.button_equal()
+        self.button_clear()
+        self.button_decimal()
 
 #loops the screen until usr exit
         self.root.mainloop()
     
     def num_screen(self):
         #subject to change later
-        ttk.Entry(self.frame).grid(row=0,column=1)
+        ttk.Label(self.frame,text="test").grid(row=0,column=1)
 #need to work on the button sizes
     def button_1(self):
         ttk.Button(self.frame,text="1").grid(row=1,column=0)
@@ -58,5 +69,34 @@ class GUI:
         ttk.Button(self.frame,text="9").grid(row=3,column=2)
     
     def button_0(self):
-        ttk.Button(self.frame,text="0").grid(row=4,column=1)
+        ttk.Button(self.frame,text="0").grid(row=4,column=0)
     
+    def button_addition(self):
+        ttk.Button(self.frame,text="+").grid(row=2,column=3)
+    
+    def button_subtraction(self):
+        ttk.Button(self.frame,text="-").grid(row=2,column=4)
+    
+    def button_multiplication(self):
+        ttk.Button(self.frame,text="x").grid(row=3,column=3)
+    
+    def button_division(self):
+        ttk.Button(self.frame,text="÷").grid(row=3,column=4)
+    
+    def button_power(self):
+        ttk.Button(self.frame,text="^").grid(row=4,column=3)
+    
+    def button_left_parenthesis(self):
+        ttk.Button(self.frame,text="(").grid(row=4,column=1)
+    
+    def button_right_parenthesis(self):
+        ttk.Button(self.frame,text=")").grid(row=4,column=2)
+    
+    def button_equal(self):
+        ttk.Button(self.frame,text="=").grid(row=4,column=4)
+    
+    def button_clear(self):
+        ttk.Button(self.frame,text="C").grid(row=1,column=4)
+    
+    def button_decimal(self):
+        ttk.Button(self.frame,text=".").grid(row=1,column=3)
