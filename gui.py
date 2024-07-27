@@ -10,6 +10,7 @@ class GUI:
     def main_screen(self):
         #sets size for screen
         self.root.resizable(False,False)
+        self.root["bg"] = "#575A5C"
         self.root.grid()
         
 
@@ -41,7 +42,7 @@ class GUI:
     
     def num_screen(self):
         #subject to change later
-        Label(self.root,text="test",padx=10,pady=10).grid(row=0,column=1)
+        Label(self.root,text="test",padx=10,pady=10,background="#575A5C").grid(row=0,column=1)
 #need to work on the button sizes
     def button_1(self):
         Button(self.root,text="1", height=3,width=6,padx=10,pady=10).grid(row=1,column=0,padx=self.padding_x,pady=self.padding_y)
