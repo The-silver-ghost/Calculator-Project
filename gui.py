@@ -1,11 +1,13 @@
 from tkinter import *
 
 
+
 class GUI:
-    def __init__(self,root,padding_x,padding_y):
+    def __init__(self,root,padding_x,padding_y,question_string):
         self.root = root
         self.padding_x = padding_x
         self.padding_y = padding_y
+        self.question_string = question_string
     
     def main_screen(self):
         #sets size for screen
@@ -23,7 +25,7 @@ class GUI:
         self.root.mainloop()
     
     def num_screen(self):
-        questionLabel = Label(self.root,text=question_string,padx=10,pady=10)
+        questionLabel = Label(self.root,textvariable=self.question_string,padx=10,pady=10)
         questionLabel.grid(row=0,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=6)
 
         answerLabel = Label(self.root,text=answer_string,padx=10,pady=10)
@@ -92,9 +94,9 @@ class GUI:
         buttonDecimal.grid(row=2,column=3,padx=self.padding_x,pady=self.padding_y)
     
     def text_from_button(self,txt):
-        global question_string
-        question_string += txt
-        print(question_string)
+        global question_string_label
+        question_string_label += txt
+        self.question_string.set(question_string_label)
 
-question_string = ""
+question_string_label = ''
 answer_string = ""
