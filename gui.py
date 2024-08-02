@@ -87,7 +87,7 @@ class GUI:
         buttonEqual = Button(self.root,text="=", height=3,width=6,padx=10,pady=10)
         buttonEqual.grid(row=5,column=4,padx=self.padding_x,pady=self.padding_y)
 
-        buttonClear = Button(self.root,text="C", height=3,width=6,padx=10,pady=10)
+        buttonClear = Button(self.root,text="C", command = self.clear_button,height=3,width=6,padx=10,pady=10)
         buttonClear.grid(row=2,column=4,padx=self.padding_x,pady=self.padding_y)
 
         buttonDecimal = Button(self.root,text=".", command=lambda: self.text_from_button("."),height=3,width=6,padx=10,pady=10)
@@ -96,6 +96,11 @@ class GUI:
     def text_from_button(self,txt):
         global question_string_label
         question_string_label += txt
+        self.question_string.set(question_string_label)
+    
+    def clear_button(self):
+        global question_string_label
+        question_string_label = ""
         self.question_string.set(question_string_label)
 
 question_string_label = ''
