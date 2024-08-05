@@ -114,12 +114,18 @@ class GUI:
         for symbol in self.string_for_calc:
             if symbol == "^":
                 answer_string_label += "**"
-            elif symbol == "÷":
+            elif symbol == "÷": #pressing this twice becomes division rounded off as per python syntax
                 answer_string_label += "/"
-            elif symbol == "x":
+            elif symbol == "x": # pressing x twice becomes power
                 answer_string_label += "*"
             else:
                 answer_string_label += symbol
-        
-        answer = eval(answer_string_label)
-        self.answer_string.set(answer)
+        try:
+            answer = eval(answer_string_label)
+            self.answer_string.set(answer)
+        except SyntaxError:
+            self.answer_string.set("Syntax Error")
+        except ZeroDivisionError:
+            self.answer_string.set("Math Error: Division by 0")
+        except TypeError:
+            self.answer_string.set("Brackets are not counted as multiplication")
