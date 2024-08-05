@@ -4,5 +4,4 @@ from tkinter import *
 
 main_root = Tk()
 
-gui.GUI(main_root,5,5,StringVar(main_root)).main_screen()
-
+gui.GUI(main_root,5,5,StringVar(main_root),StringVar(main_root)).main_screen()
