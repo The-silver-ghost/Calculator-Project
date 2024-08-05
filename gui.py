@@ -1,7 +1,7 @@
 from tkinter import *
 
-question_string_label = ''
-answer_string_label = ""
+question_string_label = ' '
+answer_string_label = " "
 
 class GUI:
     def __init__(self,root,padding_x,padding_y,question_string,answer_string):
@@ -97,15 +97,20 @@ class GUI:
     
     def text_from_button(self,txt):
         global question_string_label
-        question_string_label += txt
+        if question_string_label[-1] == "x" and txt == "x":
+            question_string_label += ""
+        elif question_string_label[-1] == "÷" and txt == '÷':
+            question_string_label += ""
+        else:
+            question_string_label += txt
         self.question_string.set(question_string_label)
     
     def clear_button_function(self):
         global question_string_label
         global answer_string_label
-        question_string_label = ""
+        question_string_label = " "
         self.question_string.set(question_string_label)
-        answer_string_label = ""
+        answer_string_label = " "
         self.answer_string.set(answer_string_label)
     
     def equal_button_function(self):
@@ -114,9 +119,9 @@ class GUI:
         for symbol in self.string_for_calc:
             if symbol == "^":
                 answer_string_label += "**"
-            elif symbol == "÷": #pressing this twice becomes division rounded off as per python syntax
+            elif symbol == "÷":
                 answer_string_label += "/"
-            elif symbol == "x": # pressing x twice becomes power
+            elif symbol == "x":
                 answer_string_label += "*"
             else:
                 answer_string_label += symbol
