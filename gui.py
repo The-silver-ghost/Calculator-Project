@@ -102,11 +102,22 @@ class GUI:
     
     def clear_button_function(self):
         global question_string_label
+        global answer_string_label
         question_string_label = ""
         self.question_string.set(question_string_label)
+        answer_string_label = ""
+        self.answer_string.set(answer_string_label)
     
     def equal_button_function(self):
         self.string_for_calc = self.question_string.get()
-        
-
-
+        global answer_string_label
+        for symbol in self.string_for_calc:
+            if symbol == "^":
+                answer_string_label += "**"
+            elif symbol == "÷":
+                answer_string_label += "/"
+            elif symbol == "x":
+                answer_string_label += "*"
+            else:
+                answer_string_label += symbol
+        self.answer_string.set(answer_string_label)
