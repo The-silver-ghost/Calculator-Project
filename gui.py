@@ -120,4 +120,6 @@ class GUI:
                 answer_string_label += "*"
             else:
                 answer_string_label += symbol
-        self.answer_string.set(answer_string_label)
+        
+        answer = eval(answer_string_label)
+        self.answer_string.set(answer)
