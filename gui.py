@@ -1,4 +1,5 @@
 from tkinter import *
+import math_functions
 
 question_string_label = ' '
 answer_string_label = " "
@@ -126,7 +127,7 @@ class GUI:
             else:
                 answer_string_label += symbol
         try:
-            answer = eval(answer_string_label)
+            answer = math_functions.regular_calc(answer_string_label)
             self.answer_string.set(answer)
         except SyntaxError:
             self.answer_string.set("Syntax Error")
