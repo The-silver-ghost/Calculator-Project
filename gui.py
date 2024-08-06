@@ -117,6 +117,7 @@ class GUI:
     def equal_button_function(self):
         self.string_for_calc = self.question_string.get()
         global answer_string_label
+        global question_string_label
         for symbol in self.string_for_calc:
             if symbol == "^":
                 answer_string_label += "**"
@@ -135,3 +136,5 @@ class GUI:
             self.answer_string.set("Math Error: Division by 0")
         except TypeError:
             self.answer_string.set("Brackets are not counted as multiplication")
+        
+        answer_string_label = ' '
