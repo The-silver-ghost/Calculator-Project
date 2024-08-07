@@ -3,6 +3,7 @@ import math_functions
 
 question_string_label = ' '
 answer_string_label = " "
+answer_button_var = ' '
 
 class GUI:
     def __init__(self,root,padding_x,padding_y,question_string,answer_string,font_specification):
@@ -30,72 +31,75 @@ class GUI:
     
     def num_screen(self):
         questionLabel = Label(self.root,textvariable=self.question_string,padx=10,pady=10)
-        questionLabel.grid(row=0,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=6)
+        questionLabel.grid(row=0,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
 
         answerLabel = Label(self.root,textvariable=self.answer_string,padx=10,pady=10)
-        answerLabel.grid(row=1,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=6)
+        answerLabel.grid(row=1,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
 
     def buttons(self):
         buttonOne = Button(self.root,text="1", command=lambda: self.text_from_button("1"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonOne.grid(row=2,column=0,padx=self.padding_x,pady=self.padding_y)
+        buttonOne.grid(row=3,column=0,padx=self.padding_x,pady=self.padding_y)
         self.txt = buttonOne.cget('text')
 
         buttonTwo = Button(self.root,text="2", command=lambda: self.text_from_button("2"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonTwo.grid(row=2,column=1,padx=self.padding_x,pady=self.padding_y)
+        buttonTwo.grid(row=3,column=1,padx=self.padding_x,pady=self.padding_y)
 
         buttonThree = Button(self.root,text="3", command=lambda: self.text_from_button("3"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonThree.grid(row=2,column=2,padx=self.padding_x,pady=self.padding_y)
+        buttonThree.grid(row=3,column=2,padx=self.padding_x,pady=self.padding_y)
 
         buttonFour = Button(self.root,text="4", command=lambda: self.text_from_button("4"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonFour.grid(row=3,column=0,padx=self.padding_x,pady=self.padding_y)
+        buttonFour.grid(row=4,column=0,padx=self.padding_x,pady=self.padding_y)
 
         buttonFive = Button(self.root,text="5", command=lambda: self.text_from_button("5"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonFive.grid(row=3,column=1,padx=self.padding_x,pady=self.padding_y)
+        buttonFive.grid(row=4,column=1,padx=self.padding_x,pady=self.padding_y)
 
         buttonSix = Button(self.root,text="6", command=lambda: self.text_from_button("6"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonSix.grid(row=3,column=2,padx=self.padding_x,pady=self.padding_y)
+        buttonSix.grid(row=4,column=2,padx=self.padding_x,pady=self.padding_y)
 
         buttonSeven = Button(self.root,text="7", command=lambda: self.text_from_button("7"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonSeven.grid(row=4,column=0,padx=self.padding_x,pady=self.padding_y)
+        buttonSeven.grid(row=5,column=0,padx=self.padding_x,pady=self.padding_y)
 
         buttonEight = Button(self.root,text="8", command=lambda: self.text_from_button("8"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonEight.grid(row=4,column=1,padx=self.padding_x,pady=self.padding_y)
+        buttonEight.grid(row=5,column=1,padx=self.padding_x,pady=self.padding_y)
 
         buttonNine = Button(self.root,text="9", command=lambda: self.text_from_button("9"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonNine.grid(row=4,column=2,padx=self.padding_x,pady=self.padding_y)
+        buttonNine.grid(row=5,column=2,padx=self.padding_x,pady=self.padding_y)
 
         buttonZero = Button(self.root,text="0", command=lambda: self.text_from_button("0"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonZero.grid(row=5,column=0,padx=self.padding_x,pady=self.padding_y)
+        buttonZero.grid(row=6,column=0,padx=self.padding_x,pady=self.padding_y)
 
         buttonAddition = Button(self.root,text="+", command=lambda: self.text_from_button("+"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonAddition.grid(row=3,column=3,padx=self.padding_x,pady=self.padding_y)
+        buttonAddition.grid(row=2,column=0,padx=self.padding_x,pady=self.padding_y)
 
         buttonSubtraction = Button(self.root,text="-", command=lambda: self.text_from_button("-"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonSubtraction.grid(row=3,column=4,padx=self.padding_x,pady=self.padding_y)
+        buttonSubtraction.grid(row=2,column=1,padx=self.padding_x,pady=self.padding_y)
 
         buttonMultiplication = Button(self.root,text="x", command=lambda: self.text_from_button("x"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonMultiplication.grid(row=4,column=3,padx=self.padding_x,pady=self.padding_y)
+        buttonMultiplication.grid(row=2,column=2,padx=self.padding_x,pady=self.padding_y)
 
         buttonDivision = Button(self.root,text="÷", command=lambda: self.text_from_button("÷"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonDivision.grid(row=4,column=4,padx=self.padding_x,pady=self.padding_y)
+        buttonDivision.grid(row=2,column=3,padx=self.padding_x,pady=self.padding_y)
 
         buttonPower = Button(self.root,text="^", command=lambda: self.text_from_button("^"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonPower.grid(row=5,column=3,padx=self.padding_x,pady=self.padding_y)
+        buttonPower.grid(row=3,column=3,padx=self.padding_x,pady=self.padding_y)
 
         buttonLeftParenthesis = Button(self.root,text="(", command=lambda: self.text_from_button("("),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonLeftParenthesis.grid(row=5,column=1,padx=self.padding_x,pady=self.padding_y)
+        buttonLeftParenthesis.grid(row=6,column=1,padx=self.padding_x,pady=self.padding_y)
 
         buttonRightParenthesis = Button(self.root,text=")", command=lambda: self.text_from_button(")"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonRightParenthesis.grid(row=5,column=2,padx=self.padding_x,pady=self.padding_y)
+        buttonRightParenthesis.grid(row=6,column=2,padx=self.padding_x,pady=self.padding_y)
 
         buttonEqual = Button(self.root,text="=", command=self.equal_button_function,height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonEqual.grid(row=5,column=4,padx=self.padding_x,pady=self.padding_y)
+        buttonEqual.grid(row=7,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
 
         buttonClear = Button(self.root,text="C", command = self.clear_button_function,height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonClear.grid(row=2,column=4,padx=self.padding_x,pady=self.padding_y)
+        buttonClear.grid(row=5,column=3,padx=self.padding_x,pady=self.padding_y)
 
         buttonDecimal = Button(self.root,text=".", command=lambda: self.text_from_button("."),height=3,width=6,padx=10,pady=10,font=self.font_specification)
-        buttonDecimal.grid(row=2,column=3,padx=self.padding_x,pady=self.padding_y)
+        buttonDecimal.grid(row=4,column=3,padx=self.padding_x,pady=self.padding_y)
+        
+        buttonAns = Button(self.root,text="Ans", command=self.ans_button_function,height=3,width=6,padx=10,pady=10,font=self.font_specification)
+        buttonAns.grid(row=6,column=3,padx=self.padding_x,pady=self.padding_y)
     
     def text_from_button(self,txt):
         global question_string_label
@@ -119,6 +123,7 @@ class GUI:
         self.string_for_calc = self.question_string.get()
         global answer_string_label
         global question_string_label
+        global answer_button_var
         for symbol in self.string_for_calc:
             if symbol == "^":
                 answer_string_label += "**"
@@ -131,6 +136,7 @@ class GUI:
         try:
             answer = math_functions.regular_calc(answer_string_label)
             self.answer_string.set(answer)
+            answer_button_var = str(answer)
         except SyntaxError:
             self.answer_string.set("Syntax Error")
         except ZeroDivisionError:
@@ -139,3 +145,9 @@ class GUI:
             self.answer_string.set("Brackets are not counted as multiplication")
         
         answer_string_label = ' '
+    
+    def ans_button_function(self):
+        global answer_button_var
+        global question_string_label
+        question_string_label += answer_button_var
+        self.question_string.set(question_string_label)
