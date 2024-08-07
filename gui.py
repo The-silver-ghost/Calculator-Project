@@ -30,10 +30,10 @@ class GUI:
         self.root.mainloop()
     
     def num_screen(self):
-        questionLabel = Label(self.root,textvariable=self.question_string,padx=10,pady=10)
+        questionLabel = Label(self.root,textvariable=self.question_string,padx=10,pady=10,font=self.font_specification)
         questionLabel.grid(row=0,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
 
-        answerLabel = Label(self.root,textvariable=self.answer_string,padx=10,pady=10)
+        answerLabel = Label(self.root,textvariable=self.answer_string,padx=10,pady=10,font=self.font_specification)
         answerLabel.grid(row=1,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
 
     def buttons(self):
@@ -89,7 +89,7 @@ class GUI:
         buttonRightParenthesis = Button(self.root,text=")", command=lambda: self.text_from_button(")"),height=3,width=6,padx=10,pady=10,font=self.font_specification)
         buttonRightParenthesis.grid(row=6,column=2,padx=self.padding_x,pady=self.padding_y)
 
-        buttonEqual = Button(self.root,text="=", command=self.equal_button_function,height=3,width=6,padx=10,pady=10,font=self.font_specification)
+        buttonEqual = Button(self.root,text="=", command=self.equal_button_function,height=1,width=38,padx=10,pady=10,font=self.font_specification)
         buttonEqual.grid(row=7,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
 
         buttonClear = Button(self.root,text="C", command = self.clear_button_function,height=3,width=6,padx=10,pady=10,font=self.font_specification)
