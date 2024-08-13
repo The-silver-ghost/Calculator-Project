@@ -19,7 +19,7 @@ class GUI:
         self.tabs = tabs
         self.quadratic_tab = quadratic_tab
         self.frame = frame
-    
+    #foreground = font, background = bg
     def main_screen(self):
         #sets size for screen
         self.root.resizable(False,False)
@@ -27,7 +27,8 @@ class GUI:
         
         self.tabs.add(self.calc_tab, text = "Calculator")
         style = ttkthemes.ThemedStyle()
-        style.theme_use("ubuntu")
+        style.theme_use("black")
+        style.configure("TButton", font="Bodoni")
         self.tabs.grid(row=0,column=0)
 
         self.tabs.add(self.quadratic_tab, text = "Quadratic Eq")
