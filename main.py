@@ -2,7 +2,6 @@ import gui
 from tkinter import *
 from tkinter import ttk
 
-
 main_root = Tk()
 main_root.title("Calculator")
 tabs = ttk.Notebook(main_root)

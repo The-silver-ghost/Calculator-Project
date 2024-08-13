@@ -149,6 +149,7 @@ class GUI:
             answer = math_functions.regular_calc(answer_string_label)
             self.answer_string.set(answer)
             answer_button_var = str(answer)
+            question_string_label = " "
         except SyntaxError:
             self.answer_string.set("Syntax Error")
         except ZeroDivisionError:
