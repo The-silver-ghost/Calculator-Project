@@ -6,20 +6,23 @@ import math_functions
 question_string_label = ' '
 answer_string_label = " "
 answer_button_var = ' '
+quadratic_question_string_label = " "
+quadratic_answer_string_label = " "
 
 class GUI:
-    def __init__(self,root,padding_x,padding_y,question_string,answer_string,font_specification,calc_tab,tabs,quadratic_tab,frame):
+    def __init__(self,root,padding_x,padding_y,question_string,answer_string,calc_tab,tabs,quadratic_tab,frame,question_string_quadratic,answer_string_quadratic):
         self.root = root
         self.padding_x = padding_x
         self.padding_y = padding_y
         self.question_string = question_string
         self.answer_string = answer_string
-        self.font_specification = font_specification
         self.calc_tab = calc_tab
         self.tabs = tabs
         self.quadratic_tab = quadratic_tab
         self.frame = frame
-    #foreground = font, background = bg
+        self.question_string_quadratic = question_string_quadratic
+        self.answer_string_quadratic = answer_string_quadratic
+
     def main_screen(self):
         #sets size for screen
         self.root.resizable(False,False)
@@ -39,7 +42,9 @@ class GUI:
 
         #all buttons go here
         self.num_screen()
-        self.buttons()
+        self.buttons_calc_tab()
+        self.num_screen_quadratic()
+        self.buttons_quadratic_tab()
 
 
         #loops the screen until usr exit
@@ -55,7 +60,7 @@ class GUI:
         textLabel = ttk.Label(self.calc_tab,text="Answer:")
         textLabel.grid(row=2,column=0,padx=self.padding_x,pady=self.padding_y)
 
-    def buttons(self):
+    def buttons_calc_tab(self):
         buttonOne = ttk.Button(self.calc_tab,text="1", command=lambda: self.text_from_button("1"))
         buttonOne.grid(row=4,column=0,padx=self.padding_x,pady=self.padding_y)
 
@@ -170,3 +175,69 @@ class GUI:
         global question_string_label
         question_string_label += answer_button_var
         self.question_string.set(question_string_label)
+    
+    def buttons_quadratic_tab(self):
+        buttonOne = ttk.Button(self.quadratic_tab,text="1",command= lambda: self.quadratic_buttons_function("1"))
+        buttonOne.grid(row=3,column=0,padx=self.padding_x,pady=self.padding_y)
+
+        buttonTwo = ttk.Button(self.quadratic_tab,text="2",command= lambda: self.quadratic_buttons_function("2"))
+        buttonTwo.grid(row=3,column=1,padx=self.padding_x,pady=self.padding_y)
+
+        buttonThree = ttk.Button(self.quadratic_tab,text="3",command= lambda: self.quadratic_buttons_function("3"))
+        buttonThree.grid(row=3,column=2,padx=self.padding_x,pady=self.padding_y)
+
+        buttonFour = ttk.Button(self.quadratic_tab,text="4",command= lambda: self.quadratic_buttons_function("4"))
+        buttonFour.grid(row=4,column=0,padx=self.padding_x,pady=self.padding_y)
+
+        buttonFive = ttk.Button(self.quadratic_tab,text="5",command= lambda: self.quadratic_buttons_function("5"))
+        buttonFive.grid(row=4,column=1,padx=self.padding_x,pady=self.padding_y)
+
+        buttonSix = ttk.Button(self.quadratic_tab,text="6",command= lambda: self.quadratic_buttons_function("6"))
+        buttonSix.grid(row=4,column=2,padx=self.padding_x,pady=self.padding_y)
+
+        buttonSeven = ttk.Button(self.quadratic_tab,text="7",command= lambda: self.quadratic_buttons_function("7"))
+        buttonSeven.grid(row=5,column=0,padx=self.padding_x,pady=self.padding_y)
+
+        buttonEight = ttk.Button(self.quadratic_tab,text="8",command= lambda: self.quadratic_buttons_function("8"))
+        buttonEight.grid(row=5,column=1,padx=self.padding_x,pady=self.padding_y)
+
+        buttonNine = ttk.Button(self.quadratic_tab,text="9",command= lambda: self.quadratic_buttons_function("9"))
+        buttonNine.grid(row=5,column=2,padx=self.padding_x,pady=self.padding_y)
+
+        buttonZero = ttk.Button(self.quadratic_tab,text="0",command= lambda: self.quadratic_buttons_function("0"))
+        buttonZero.grid(row=6,column=0,padx=self.padding_x,pady=self.padding_y)
+
+        buttonAddition = ttk.Button(self.quadratic_tab,text="+",command= lambda: self.quadratic_buttons_function("+"))
+        buttonAddition.grid(row=3,column=3,padx=self.padding_x,pady=self.padding_y)
+
+        buttonSubtraction = ttk.Button(self.quadratic_tab,text="-",command= lambda: self.quadratic_buttons_function("-"))
+        buttonSubtraction.grid(row=4,column=3,padx=self.padding_x,pady=self.padding_y)
+
+        buttonEqual = ttk.Button(self.quadratic_tab,text="=")
+        buttonEqual.grid(row=6,column=2,padx=self.padding_x,pady=self.padding_y)
+
+        buttonClear = ttk.Button(self.quadratic_tab,text="C",command=self.clear_button_function_quadratic)
+        buttonClear.grid(row=6,column=1,padx=self.padding_x,pady=self.padding_y)
+
+        buttonDecimal = ttk.Button(self.quadratic_tab,text=".",command= lambda: self.quadratic_buttons_function("."))
+        buttonDecimal.grid(row=5,column=3,padx=self.padding_x,pady=self.padding_y)
+
+    def num_screen_quadratic(self):
+        quadraticQuestionLabel = ttk.Label(self.quadratic_tab,textvariable=self.question_string_quadratic)
+        quadraticQuestionLabel.grid(row=1,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
+
+        quadraticAnswerLabel = ttk.Label(self.quadratic_tab,textvariable=self.answer_string_quadratic)
+        quadraticAnswerLabel.grid(row=2,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
+    
+    def quadratic_buttons_function(self,string):
+        global quadratic_question_string_label
+        quadratic_question_string_label += string
+        self.question_string_quadratic.set(quadratic_question_string_label)
+    
+    def clear_button_function_quadratic(self):
+        global quadratic_question_string_label
+        global quadratic_answer_string_label
+        quadratic_question_string_label = " "
+        self.question_string_quadratic.set(quadratic_question_string_label)
+        quadratic_answer_string_label = " "
+        self.answer_string_quadratic.set(quadratic_answer_string_label)
