@@ -28,7 +28,9 @@ class GUI:
         self.tabs.add(self.calc_tab, text = "Calculator")
         style = ttkthemes.ThemedStyle()
         style.theme_use("black")
-        style.configure("TButton", font="Bodoni")
+        style.configure("TButton",font="Bodoni",padding=9,width=6,anchor="center")
+        style.map("TButton",background=[("active","red")])
+        style.configure("TLabel", font="Bodoni")
         self.tabs.grid(row=0,column=0)
 
         self.tabs.add(self.quadratic_tab, text = "Quadratic Eq")
@@ -44,74 +46,77 @@ class GUI:
         self.root.mainloop()
     
     def num_screen(self):
-        questionLabel = ttk.Label(self.calc_tab,textvariable=self.question_string,)
+        questionLabel = ttk.Label(self.calc_tab,textvariable=self.question_string)
         questionLabel.grid(row=1,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
 
         answerLabel = ttk.Label(self.calc_tab,textvariable=self.answer_string)
-        answerLabel.grid(row=2,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
+        answerLabel.grid(row=2,column=1,padx=self.padding_x,pady=self.padding_y,columnspan=2)
+
+        textLabel = ttk.Label(self.calc_tab,text="Answer:")
+        textLabel.grid(row=2,column=0,padx=self.padding_x,pady=self.padding_y)
 
     def buttons(self):
-        buttonOne = ttk.Button(self.calc_tab,text="1", command=lambda: self.text_from_button("1"),width=6,)
+        buttonOne = ttk.Button(self.calc_tab,text="1", command=lambda: self.text_from_button("1"))
         buttonOne.grid(row=4,column=0,padx=self.padding_x,pady=self.padding_y)
 
-        buttonTwo = ttk.Button(self.calc_tab,text="2", command=lambda: self.text_from_button("2"),width=6)
+        buttonTwo = ttk.Button(self.calc_tab,text="2", command=lambda: self.text_from_button("2"))
         buttonTwo.grid(row=4,column=1,padx=self.padding_x,pady=self.padding_y)
 
-        buttonThree = ttk.Button(self.calc_tab,text="3", command=lambda: self.text_from_button("3"),width=6)
+        buttonThree = ttk.Button(self.calc_tab,text="3", command=lambda: self.text_from_button("3"))
         buttonThree.grid(row=4,column=2,padx=self.padding_x,pady=self.padding_y)
 
-        buttonFour = ttk.Button(self.calc_tab,text="4", command=lambda: self.text_from_button("4"),width=6)
+        buttonFour = ttk.Button(self.calc_tab,text="4", command=lambda: self.text_from_button("4"))
         buttonFour.grid(row=5,column=0,padx=self.padding_x,pady=self.padding_y)
 
-        buttonFive = ttk.Button(self.calc_tab,text="5", command=lambda: self.text_from_button("5"),width=6)
+        buttonFive = ttk.Button(self.calc_tab,text="5", command=lambda: self.text_from_button("5"))
         buttonFive.grid(row=5,column=1,padx=self.padding_x,pady=self.padding_y)
 
-        buttonSix = ttk.Button(self.calc_tab,text="6", command=lambda: self.text_from_button("6"),width=6)
+        buttonSix = ttk.Button(self.calc_tab,text="6", command=lambda: self.text_from_button("6"))
         buttonSix.grid(row=5,column=2,padx=self.padding_x,pady=self.padding_y)
 
-        buttonSeven = ttk.Button(self.calc_tab,text="7", command=lambda: self.text_from_button("7"),width=6)
+        buttonSeven = ttk.Button(self.calc_tab,text="7", command=lambda: self.text_from_button("7"))
         buttonSeven.grid(row=6,column=0,padx=self.padding_x,pady=self.padding_y)
 
-        buttonEight = ttk.Button(self.calc_tab,text="8", command=lambda: self.text_from_button("8"),width=6)
+        buttonEight = ttk.Button(self.calc_tab,text="8", command=lambda: self.text_from_button("8"))
         buttonEight.grid(row=6,column=1,padx=self.padding_x,pady=self.padding_y)
 
-        buttonNine = ttk.Button(self.calc_tab,text="9", command=lambda: self.text_from_button("9"),width=6)
+        buttonNine = ttk.Button(self.calc_tab,text="9", command=lambda: self.text_from_button("9"))
         buttonNine.grid(row=6,column=2,padx=self.padding_x,pady=self.padding_y)
 
-        buttonZero = ttk.Button(self.calc_tab,text="0", command=lambda: self.text_from_button("0"),width=6)
+        buttonZero = ttk.Button(self.calc_tab,text="0", command=lambda: self.text_from_button("0"))
         buttonZero.grid(row=7,column=0,padx=self.padding_x,pady=self.padding_y)
 
-        buttonAddition = ttk.Button(self.calc_tab,text="+", command=lambda: self.text_from_button("+"),width=6)
+        buttonAddition = ttk.Button(self.calc_tab,text="+", command=lambda: self.text_from_button("+"))
         buttonAddition.grid(row=3,column=0,padx=self.padding_x,pady=self.padding_y)
 
-        buttonSubtraction = ttk.Button(self.calc_tab,text="-", command=lambda: self.text_from_button("-"),width=6)
+        buttonSubtraction = ttk.Button(self.calc_tab,text="-", command=lambda: self.text_from_button("-"))
         buttonSubtraction.grid(row=3,column=1,padx=self.padding_x,pady=self.padding_y)
 
-        buttonMultiplication = ttk.Button(self.calc_tab,text="x", command=lambda: self.text_from_button("x"),width=6)
+        buttonMultiplication = ttk.Button(self.calc_tab,text="x", command=lambda: self.text_from_button("x"))
         buttonMultiplication.grid(row=3,column=2,padx=self.padding_x,pady=self.padding_y)
 
-        buttonDivision = ttk.Button(self.calc_tab,text="÷", command=lambda: self.text_from_button("÷"),width=6)
+        buttonDivision = ttk.Button(self.calc_tab,text="÷", command=lambda: self.text_from_button("÷"))
         buttonDivision.grid(row=3,column=3,padx=self.padding_x,pady=self.padding_y)
 
-        buttonPower = ttk.Button(self.calc_tab,text="^", command=lambda: self.text_from_button("^"),width=6)
+        buttonPower = ttk.Button(self.calc_tab,text="^", command=lambda: self.text_from_button("^"))
         buttonPower.grid(row=4,column=3,padx=self.padding_x,pady=self.padding_y)
 
-        buttonLeftParenthesis = ttk.Button(self.calc_tab,text="(", command=lambda: self.text_from_button("("),width=6)
+        buttonLeftParenthesis = ttk.Button(self.calc_tab,text="(", command=lambda: self.text_from_button("("))
         buttonLeftParenthesis.grid(row=7,column=1,padx=self.padding_x,pady=self.padding_y)
 
-        buttonRightParenthesis = ttk.Button(self.calc_tab,text=")", command=lambda: self.text_from_button(")"),width=6)
+        buttonRightParenthesis = ttk.Button(self.calc_tab,text=")", command=lambda: self.text_from_button(")"))
         buttonRightParenthesis.grid(row=7,column=2,padx=self.padding_x,pady=self.padding_y)
 
-        buttonEqual = ttk.Button(self.calc_tab,text="=", command=self.equal_button_function,width=38)
+        buttonEqual = ttk.Button(self.calc_tab,text="=", command=self.equal_button_function,width=36)
         buttonEqual.grid(row=8,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
 
-        buttonClear = ttk.Button(self.calc_tab,text="C", command = self.clear_button_function,width=6)
+        buttonClear = ttk.Button(self.calc_tab,text="C", command = self.clear_button_function)
         buttonClear.grid(row=6,column=3,padx=self.padding_x,pady=self.padding_y)
 
-        buttonDecimal = ttk.Button(self.calc_tab,text=".", command=lambda: self.text_from_button("."),width=6)
+        buttonDecimal = ttk.Button(self.calc_tab,text=".", command=lambda: self.text_from_button("."))
         buttonDecimal.grid(row=5,column=3,padx=self.padding_x,pady=self.padding_y)
         
-        buttonAns = ttk.Button(self.calc_tab,text="Ans", command=self.ans_button_function,width=6)
+        buttonAns = ttk.Button(self.calc_tab,text="Ans", command=self.ans_button_function)
         buttonAns.grid(row=7,column=3,padx=self.padding_x,pady=self.padding_y)
     
     def text_from_button(self,txt):
