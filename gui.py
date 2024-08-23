@@ -8,9 +8,11 @@ answer_string_label = " "
 answer_button_var = ' '
 quadratic_question_string_label = " "
 quadratic_answer_string_label = " "
+count = 0
+num_list = []
 
 class GUI:
-    def __init__(self,root,padding_x,padding_y,question_string,answer_string,calc_tab,tabs,quadratic_tab,frame,question_string_quadratic,answer_string_quadratic):
+    def __init__(self,root,padding_x,padding_y,question_string,answer_string,calc_tab,tabs,quadratic_tab,frame,question_string_quadratic,answer_string_quadratic,quadratic_string):
         self.root = root
         self.padding_x = padding_x
         self.padding_y = padding_y
@@ -22,6 +24,7 @@ class GUI:
         self.frame = frame
         self.question_string_quadratic = question_string_quadratic
         self.answer_string_quadratic = answer_string_quadratic
+        self.quadratic_string = quadratic_string
 
     def main_screen(self):
         #sets size for screen
@@ -44,6 +47,7 @@ class GUI:
         self.num_screen()
         self.buttons_calc_tab()
         self.num_screen_quadratic()
+        self.equal_button_function_quadratic()
         self.buttons_quadratic_tab()
 
 
@@ -213,7 +217,7 @@ class GUI:
         buttonSubtraction = ttk.Button(self.quadratic_tab,text="-",command= lambda: self.quadratic_buttons_function("-"))
         buttonSubtraction.grid(row=4,column=3,padx=self.padding_x,pady=self.padding_y)
 
-        buttonEqual = ttk.Button(self.quadratic_tab,text="=")
+        buttonEqual = ttk.Button(self.quadratic_tab,text="=",command=self.equal_button_function_quadratic)
         buttonEqual.grid(row=6,column=2,padx=self.padding_x,pady=self.padding_y)
 
         buttonClear = ttk.Button(self.quadratic_tab,text="C",command=self.clear_button_function_quadratic)
@@ -224,7 +228,10 @@ class GUI:
 
     def num_screen_quadratic(self):
         quadraticQuestionLabel = ttk.Label(self.quadratic_tab,textvariable=self.question_string_quadratic)
-        quadraticQuestionLabel.grid(row=1,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
+        quadraticQuestionLabel.grid(row=1,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=2)
+
+        quadraticTextLabel = ttk.Label(self.quadratic_tab,textvariable=self.quadratic_string)
+        quadraticTextLabel.grid(row=1,column=1,padx=self.padding_x,pady=self.padding_y)
 
         quadraticAnswerLabel = ttk.Label(self.quadratic_tab,textvariable=self.answer_string_quadratic)
         quadraticAnswerLabel.grid(row=2,column=0,padx=self.padding_x,pady=self.padding_y,columnspan=4)
@@ -241,3 +248,51 @@ class GUI:
         self.question_string_quadratic.set(quadratic_question_string_label)
         quadratic_answer_string_label = " "
         self.answer_string_quadratic.set(quadratic_answer_string_label)
+    
+    def equal_button_function_quadratic(self):
+        global count
+        global quadratic_question_string_label
+        global quadratic_answer_string_label
+        global num_list
+
+        
+        if count == 0:
+            self.quadratic_string.set("x²")
+            count += 1
+        elif count == 1:
+            self.quadratic_string.set("x")
+            num_list.append(quadratic_question_string_label)
+            quadratic_question_string_label = " "
+            self.question_string_quadratic.set(quadratic_question_string_label)
+            count += 1
+
+        elif count == 2:
+            self.quadratic_string.set("")
+            num_list.append(quadratic_question_string_label)
+            quadratic_question_string_label = " "
+            self.question_string_quadratic.set(quadratic_question_string_label)
+            count += 1
+        elif count == 3:
+            num_list.append(quadratic_question_string_label)
+            print(num_list)
+            
+            try:
+                answer=math_functions.quadratic_calc(num_list)
+                quadratic_answer_string_label = answer
+                self.answer_string_quadratic.set(quadratic_answer_string_label)
+            except ZeroDivisionError:
+                quadratic_answer_string_label = "Math Error: Division By Zero"
+                self.answer_string_quadratic.set(quadratic_answer_string_label)
+            except ValueError:
+                quadratic_answer_string_label = "Necessary Values Missing/Syntax Error"
+                self.answer_string_quadratic.set(quadratic_answer_string_label)
+            
+            
+            
+            num_list.clear()
+            quadratic_question_string_label = " "
+            self.question_string_quadratic.set(quadratic_question_string_label)
+            count = 0
+            count += 1
+
+        print(count,num_list)
