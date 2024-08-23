@@ -244,10 +244,15 @@ class GUI:
     def clear_button_function_quadratic(self):
         global quadratic_question_string_label
         global quadratic_answer_string_label
+        global num_list
+        global count
         quadratic_question_string_label = " "
         self.question_string_quadratic.set(quadratic_question_string_label)
         quadratic_answer_string_label = " "
         self.answer_string_quadratic.set(quadratic_answer_string_label)
+        count = 1
+        num_list = []
+        self.quadratic_string.set("x²")
     
     def equal_button_function_quadratic(self):
         global count
@@ -273,6 +278,7 @@ class GUI:
             self.question_string_quadratic.set(quadratic_question_string_label)
             count += 1
         elif count == 3:
+            self.quadratic_string.set("x²")
             num_list.append(quadratic_question_string_label)
             print(num_list)
             
