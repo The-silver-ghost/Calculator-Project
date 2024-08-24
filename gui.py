@@ -29,6 +29,8 @@ class GUI:
     def main_screen(self):
         #sets size for screen
         self.root.resizable(False,False)
+        icon = PhotoImage(file="calc_app/assets/logo2.png")
+        self.root.iconphoto(True,icon)
         self.frame.grid()
         
         self.tabs.add(self.calc_tab, text = "Calculator")
@@ -300,5 +302,3 @@ class GUI:
             self.question_string_quadratic.set(quadratic_question_string_label)
             count = 0
             count += 1
-
-        print(count,num_list)
