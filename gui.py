@@ -282,7 +282,6 @@ class GUI:
         elif count == 3:
             self.quadratic_string.set("x²")
             num_list.append(quadratic_question_string_label)
-            print(num_list)
             
             try:
                 answer=math_functions.quadratic_calc(num_list)
