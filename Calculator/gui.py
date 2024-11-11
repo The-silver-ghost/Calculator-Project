@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import ttkthemes
-import math_functions
+import Calculator.math_functions as math_functions
 
 question_string_label = ' '
 answer_string_label = " "
